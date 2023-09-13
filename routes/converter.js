@@ -17,7 +17,7 @@ converter.post("/convert", async (req, res) => {
     const response = await axios.post(
       "https://api.openai.com/v1/engines/text-davinci-003/completions",
       {
-        prompt: `Translate the following code ${code} into ${generatedLanguage}`,
+        prompt: `Translate the following code ${code} into ${generatedLanguage} and also give the conversion instructions.`,
         max_tokens: 400,
       },
       {
@@ -86,7 +86,9 @@ converter.post("/debug", async (req, res) => {
     const response = await axios.post(
       "https://api.openai.com/v1/engines/text-davinci-003/completions",
       {
-        prompt: `Debug the code ${code}`,
+        prompt: `Debug the following code effectively  ${code}.
+        find out errors and list them, then tell me how I can improve my code , then at last remove all 
+        errors from code and give me the bug free code`,
         max_tokens: 400,
       },
       {
@@ -119,7 +121,11 @@ converter.post("/quality", async (req, res) => {
     const response = await axios.post(
       "https://api.openai.com/v1/engines/text-davinci-003/completions",
       {
-        prompt: `Do the deep quality assesment and give a brief description about the code ${code} and check if it adhere to the standard coding practices or not, and also give a brief about the concepts used in the code`,
+        prompt: `Identitify the following code ${code} and it's language , check the quality of the  following code.
+        give me an assessment of the code's quality (such as commentary on style, how its organised, potential improvements, etc.) 
+        then tell me how I can improve my code , then  remove all 
+        errors from code and give me the bug free code in the same language
+        at last rate the code quality on a scale of 10 points. Try to provide your response in form of pointers in markdown language`,
         max_tokens: 400,
       },
       {
