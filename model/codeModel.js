@@ -16,6 +16,7 @@ const codeSchema = new mongoose.Schema({
         type: Date,
         default: Date.now,
       }
+      
 })
 
 const codeModel = mongoose.model("Code", codeSchema)

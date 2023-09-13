@@ -23,5 +23,5 @@ const connect = async () => {
 
 app.listen(process.env.PORT, () => {
   connect();
-  console.log("listening on PORT");
+  console.log(`listening on PORT ${process.env.PORT}`);
 });
